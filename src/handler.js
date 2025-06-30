@@ -163,9 +163,32 @@ const updateBookByIdHandler = (request, h) => {
   response.code(404);
   return response;
 };
+
+// menghapus buku
+const deleteBookByIdHandler = (request, h) => {
+  const { id } = request.params;
+  const index = booksShelf.findIndex((book) => book.id === id); // id yang di data booksShelf harus sama dengan id yang diminta client
+
+  if (index !== -1) {
+    booksShelf.splice(index, 1); // hapus pada posisi 'index' dan hanya 1 element saja yang dihapus
+    const response = h.response({
+      status: "success",
+      message: "Buku berhasil dihapus",
+    });
+    response.code(200);
+    return response;
+  }
+  const response = h.response({
+    status: "fail",
+    message: "Buku gagal dihapus. Id tidak ditemukan",
+  });
+  response.code(404);
+  return response;
+};
 export {
   addBooksHandler,
   getAllBooksHandler,
   getBooksByIdHandler,
   updateBookByIdHandler,
+  deleteBookByIdHandler
 };
