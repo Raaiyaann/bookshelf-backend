@@ -3,7 +3,7 @@ import {
   getAllBooksHandler,
   getBooksByIdHandler,
   updateBookByIdHandler,
-  deleteBookByIdHandler
+  deleteBookByIdHandler,
 } from "./handler.js";
 const routes = [
   {
@@ -27,10 +27,10 @@ const routes = [
     handler: updateBookByIdHandler,
   },
   {
-    method:"DELETE",
-    path:"/books/{id}",
-    handler:deleteBookByIdHandler
-  }
+    method: "DELETE",
+    path: "/books/{id}",
+    handler: deleteBookByIdHandler,
+  },
 ];
 
 export default routes;

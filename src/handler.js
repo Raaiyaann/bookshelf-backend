@@ -60,7 +60,7 @@ const addBooksHandler = (request, h) => {
       },
     });
     response.code(201);
-    return response;
+    return response; 
   }
 };
 
@@ -82,7 +82,7 @@ const getAllBooksHandler = (request, h) => {
   return response;
 };
 
-// menampilkan buku secara detail
+// menampilkan buku secara detail agar lebih detail untuk pengaksesannya
 const getBooksByIdHandler = (request, h) => {
   const { id } = request.params;
   const book = booksShelf.find((b) => b.id === id); // kalau misalkan tidak ada buku dalam booksShelf, nanti nilai yang dikembalikan undefined, maka cara menanganinya seperti dibawah
@@ -123,8 +123,8 @@ const updateBookByIdHandler = (request, h) => {
     });
     response.code(400);
     return response;
-  }
-  if (!name) {
+  } 
+  if (!name) { 
     const response = h.response({
       status: "fail",
       message: "Gagal memperbarui buku. Mohon isi nama buku",
@@ -185,6 +185,7 @@ const deleteBookByIdHandler = (request, h) => {
   response.code(404);
   return response;
 };
+
 export {
   addBooksHandler,
   getAllBooksHandler,
